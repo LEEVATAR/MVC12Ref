@@ -3,8 +3,11 @@
 <!DOCTYPE mapper
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="UserMapper">
+<!-- SpringBoot 사용시 변경된 부분 : DaoImpl 을 만들지 않는다.
+<mapper namespace="UserMapper10">
+이제 유저다오에다가 @Mapper 사용해서 임플, sql세션 필요없이 구동가능하다. 
+-->
+<mapper namespace="com.model2.mvc.service.user.UserDao">
  	
  	
 	<resultMap id="userSelectMap" type="user">

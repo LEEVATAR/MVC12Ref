@@ -35,19 +35,23 @@ public class Product {
 		return manuDate;
 	}
 	public void setManuDate(String ManuDate){
-		this.manuDate =ManuDate;
-		
-		System.out.println("manuDate in product domain"+manuDate);
-		String result = "";
-			if(manuDate != null) {
-				String [] arr = manuDate.split("-");
-				
-				for(String s : arr) {
-					result += s;
-				}
-			}
-			manuDate = result;
+		this.manuDate =processManuDate(manuDate);
 	}
+	//날짜형태 10자를 8자로 하기위함
+	private String processManuDate(String manuDate) {
+        if (manuDate == null) {
+            return null;
+        }
+
+        String[] arr = manuDate.split("-");
+        StringBuilder result = new StringBuilder();
+
+        for (String s : arr) {
+            result.append(s);
+        }
+        return result.toString();
+    }
+	
 	public int getPrice() {
 		return price;
 	}

@@ -8,18 +8,30 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.UserService;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserDao;
 
-@Service("userServiceImpl")
+@Service("userService")
+
+@Transactional()
 public class UserServiceImpl implements UserService{
-    
+	//Field
     @Autowired
-    @Qualifier("userDaoImpl")
-    private UserDao userDao;
+    @Qualifier("userDao")
+    UserDao userDao;
+    
+    public void setUserDao(UserDao userDao) {
+		System.out.println("::"+getClass()+".setUserDao  Call.....");
+		this.userDao = userDao;
+	}	
+	///Constructor
+	public UserServiceImpl() {
+		System.out.println("::"+getClass()+" default Constructor Call.....");
+	}
     
     public void addUser(User user) throws Exception {
         userDao.addUser(user);

@@ -23,8 +23,8 @@ import com.model2.mvc.service.domain.User;
 
 import jakarta.servlet.http.HttpSession;
 
-
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
@@ -41,15 +41,15 @@ public class UserController {
 	@Value("${common.pageSize}")	
 	int pageSize;
 
-	@GetMapping("/user/addUser")
+	@GetMapping("/addUser")
 	public String addUser() throws Exception{
 
-	    System.out.println("/user/addUser : GET");
+	    System.out.println("/addUser : GET");
 	    
 	    return "redirect:/user/addUserView.jsp";
 	}
 
-	@PostMapping("/user/addUser")
+	@PostMapping("/addUser")
 	public String addUser( @ModelAttribute("user") User user ) throws Exception {
 
 	    System.out.println("/user/addUser : POST");
@@ -59,7 +59,7 @@ public class UserController {
 	}
 
 
-	@GetMapping("/user/getUser")
+	@GetMapping("/getUser")
 	public String getUser( @RequestParam("userId") String userId , Model model ) throws Exception {
 	    
 	    System.out.println("/user/getUser : GET");
@@ -70,7 +70,7 @@ public class UserController {
 	}
 
 
-	@GetMapping("/user/updateUser")
+	@GetMapping("/updateUser")
 	public String updateUser( @RequestParam("userId") String userId , Model model ) throws Exception{
 
 	    System.out.println("/user/updateUser : GET");
@@ -80,7 +80,7 @@ public class UserController {
 	    return "forward:/user/updateUser.jsp";
 	}
 
-	@PostMapping("/user/updateUser")
+	@PostMapping("/updateUser")
 	public String updateUser( @ModelAttribute("user") User user , Model model , HttpSession session) throws Exception{
 
 	    System.out.println("/user/updateUser : POST");
@@ -95,7 +95,7 @@ public class UserController {
 	}
 
 
-	@GetMapping("/user/login")
+	@GetMapping("/login")
 	public String login() throws Exception{
 	    
 	    System.out.println("/user/logon : GET");
@@ -103,7 +103,7 @@ public class UserController {
 	    return "redirect:/user/loginView.jsp";
 	}
 
-	@PostMapping("/user/login")
+	@PostMapping("/login")
 	public String login(@ModelAttribute("user") User user , HttpSession session ) throws Exception{
 	    
 	    System.out.println("/user/login : POST");
